@@ -1,14 +1,28 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const SearchBar = () => {
+const SearchBar = ({ setFilteredCompanies }) => {
   const [input, setInput] = useState("");
 
-  async function fetchData() {
-    const res = await axios.get("http://127.0.0.1:5000/companies");
-    const data = res.data;
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:5000/companies");
+        const companies = res.data;
+
+        const filteredCompanies = companies.filter((company) =>
+          company.name.toLowerCase().includes(input.toLowerCase())
+        );
+
+        setFilteredCompanies(filteredCompanies);
+      } catch (error) {
+        console.error("Error fetching company details:", error);
+        setFilteredCompanies([]);
+      }
+    };
+
+    fetchData();
+  }, [input, setFilteredCompanies]);
 
   return (
     <div className="flex flex-col items-center m-auto">
