@@ -1,12 +1,12 @@
+import React from "react";
+
 export default function Footer() {
   return (
-    <div className="bg-gray-900 text-white p-5 fixed bottom-0 w-full">
-      <div className="flex justify-center">
-        <div>
-          <h1 className="text-2xl font-bold">Company List</h1>
-          <p className="text-sm">All rights reserved</p>
-        </div>
+    <footer className="bg-gray-900 text-white py-6">
+      <div className="mb-4 md:mb-0 flex flex-col justify-between items-center">
+        <h1 className="text-2xl font-bold">Company List</h1>
+        <p className="text-sm">All rights reserved © 2024</p>
       </div>
-    </div>
+    </footer>
   );
 }

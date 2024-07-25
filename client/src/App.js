@@ -7,15 +7,17 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <div id="root">
       <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route
-          path="/company-details/:company_id"
-          element={<CompanyDetails />}
-        />
-      </Routes>
+      <div className="main-content">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route
+            path="/company-details/:company_id"
+            element={<CompanyDetails />}
+          />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
