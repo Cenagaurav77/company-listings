@@ -1,0 +1,44 @@
+The API serves company and location data, enabling users to fetch details about companies and their respective locations.
+
+Base URL - http://127.0.0.1:5000
+
+Endpoints:
+
+1. Get All Companies
+
+Endpoint: http://127.0.0.1:5000/companies
+
+Method: GET
+Description: Retrieves a list of all companies.
+Response:
+Status Code: 200 OK
+Content: A JSON array of company objects.
+
+2. Get Company Details by ID
+
+Endpoint: http://127.0.0.1:5000/companies/{company_id}
+
+Method: GET
+Description: Retrieves details for a specific company by its ID.
+Path Parameters: company_id (integer): The ID of the company.
+Response:
+Status Code: 200 OK
+Content: A JSON object with the company details.
+
+3. Get Locations for a Company
+
+Endpoint: http://127.0.0.1:5000/companies/{company_id}/locations
+
+Method: GET
+Description: Retrieves a list of all locations for a specific company.
+Path Parameters: company_id (integer): The ID of the company.
+Response:
+Status Code: 200 OK
+Content: A JSON array of location objects.
+
+Error Responses:
+
+For all endpoints, the following error responses may be returned:
+
+404 Not Found: The requested resource was not found.
+500 Internal Server Error: An internal server error occurred.

@@ -21,3 +21,5 @@ Dockerfile
 *.swp
 *.swo
 .DS_Store
+
+api-documentation.tx
