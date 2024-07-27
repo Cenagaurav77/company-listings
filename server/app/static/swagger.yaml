@@ -33,6 +33,26 @@ paths:
                       type: number
                       format: float
                       example: -122.4194
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal Server Error
   /companies/{company_id}:
     get:
       summary: Get a company by ID
@@ -60,13 +80,33 @@ paths:
                     type: string
                     example: 123 Main St
                   latitude:
-                      type: number
-                      format: float
-                      example: 37.7749
+                    type: number
+                    format: float
+                    example: 37.7749
                   longitude:
-                      type: number
-                      format: float
-                      example: -122.4194
+                    type: number
+                    format: float
+                    example: -122.4194
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal Server Error
   /companies/{company_id}/locations:
     get:
       summary: Get locations for a company by ID
@@ -106,3 +146,23 @@ paths:
                       type: number
                       format: float
                       example: -122.4194
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal Server Error
