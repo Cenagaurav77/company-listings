@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# Company Listings Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web application provides an intuitive and user-friendly interface for viewing a comprehensive list of companies and their respective locations. Users can browse through various companies, view detailed information about each company, and explore the exact locations on an interactive map. The application is designed to be fully responsive, ensuring a seamless experience on both desktop and mobile devices. The frontend is built with React and styled using Tailwind CSS, while the backend is powered by Flask. Docker is used to containerize the application, making it easy to deploy and manage.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [Additional Notes](#additional-notes)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- View a list of companies and their details.
+- View locations for each company on an interactive map.
+- Search for companies by name.
+- Responsive design for both desktop and mobile views.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- React
+- Tailwind CSS
+- Axios
+- Flask (Backend)
+- Docker
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Prerequisites
 
-### `npm run build`
+Make sure you have the following installed on your system:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Python](https://www.python.org/) (v3.9 or higher)
+- [Docker](https://www.docker.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository:**
 
-### `npm run eject`
+    ```sh
+    git clone https://github.com/your-username/company-listings.git
+    cd company-listings
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install dependencies for the frontend:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```sh
+    cd client
+    npm install
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Install dependencies for the backend:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```sh
+    cd ../server
+    pip install -r requirements.txt
 
-## Learn More
+    (if facing any error, while installing the dependencies. Create a virtual python environment, using below command to support the installation of the dependencies)
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Running the Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Using Docker Compose
 
-### Code Splitting
+1. **Build and run the containers:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```sh
+    docker-compose up --build
+    ```
 
-### Analyzing the Bundle Size
+2. **Access the application:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    - Frontend: `http://localhost:3000`
+    - Backend: `http://localhost:5000`
 
-### Making a Progressive Web App
+### Running Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Running the Backend
 
-### Advanced Configuration
+1. **Navigate to the server directory:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```sh
+    cd server
+    ```
+    
+2. **Run the Flask application:**
 
-### Deployment
+    ```sh
+    (Only, if you are using virtual python environment)
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    (direct run)
+    python main.py
+    ```
 
-### `npm run build` fails to minify
+#### Running the Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Navigate to the client directory:**
+
+    ```sh
+    cd client
+    ```
+
+2. **Start the React application:**
+
+    ```sh
+    npm start
+    ```
+
+3. **Access the application:**
+
+    - Frontend: `http://localhost:3000`
+    - Backend: `http://localhost:5000`
+
+## API Documentation
+
+The API serves company and location data. Below are the available endpoints:
+
+### 1. Get All Companies
+
+- **Endpoint**: `/companies`
+- **Method**: `GET`
+- **Description**: Retrieves a list of all companies.
+- **Response**: A JSON array of company objects.
+
+### 2. Get Company Details by ID
+
+- **Endpoint**: `/companies/{company_id}`
+- **Method**: `GET`
+- **Description**: Retrieves details for a specific company by its ID.
+- **Response**: A JSON object with the company details.
+
+### 3. Get Locations for a Company
+
+- **Endpoint**: `/companies/{company_id}/locations`
+- **Method**: `GET`
+- **Description**: Retrieves a list of all locations for a specific company.
+- **Response**: A JSON array of location objects.
+
+### Error Responses:
+
+For all endpoints, the following error responses may be returned:
+
+**404 Not Found**: The requested resource was not found.
+**500 Internal Server Error**: An internal server error occurred.
+
+## Additional Notes
+
+- Ensure the backend server is running before starting the frontend application to avoid API call issues.
+- The application uses Leaflet for map rendering and Tailwind CSS for responsive design.
