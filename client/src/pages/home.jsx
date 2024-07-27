@@ -13,7 +13,7 @@ export default function Home() {
         const res = await axios.get("http://127.0.0.1:5000/companies");
         const data = res.data;
         setCompanies(data);
-        setFilteredCompanies(data); // Initialize filteredCompanies with all companies
+        setFilteredCompanies(data); 
         console.log(data);
       } catch (err) {
         console.log("Error fetching the data: ", err);
