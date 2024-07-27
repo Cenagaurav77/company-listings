@@ -10,15 +10,24 @@ import "leaflet/dist/leaflet.css";
 import "../styles/map.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
+
+// Merge custom icons with Leaflet's default icon options
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
+// CompanyDetails component: Displays company locations on a map with a dropdown menu
 export default function CompanyDetails() {
+
+  // Get the company_id from the URL parameters
   const { company_id } = useParams();
+
+  // State to store the list of company locations
   const [companyDetails, setCompanyDetails] = useState([]);
+
+  // State to store the currently active (selected) location
   const [activeLocation, setActiveLocation] = useState(null);
 
   useEffect(() => {
@@ -28,7 +37,9 @@ export default function CompanyDetails() {
           `http://127.0.0.1:5000/companies/${company_id}/locations`
         );
         setCompanyDetails(res.data);
-        setActiveLocation(res.data[0]); // Set the first location as active initially
+
+        // Set the first location as the active location initially
+        setActiveLocation(res.data[0]); 
       } catch (err) {
         console.log("Error fetching company details: ", err);
       }
@@ -41,6 +52,8 @@ export default function CompanyDetails() {
     const selectedLocation = companyDetails.find(
       (location) => location.location_id === parseInt(locationId)
     );
+
+    // Update the activeLocation state with the selected location
     setActiveLocation(selectedLocation);
   };
 

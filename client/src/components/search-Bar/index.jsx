@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const SearchBar = ({ setFilteredCompanies }) => {
+  // State to store the input value from the search bar
   const [input, setInput] = useState("");
 
   useEffect(() => {
@@ -10,6 +11,7 @@ const SearchBar = ({ setFilteredCompanies }) => {
         const res = await axios.get("http://127.0.0.1:5000/companies");
         const companies = res.data;
 
+        // Filter companies based on the input value
         const filteredCompanies = companies.filter((company) =>
           company.name.toLowerCase().includes(input.toLowerCase())
         );
@@ -22,7 +24,7 @@ const SearchBar = ({ setFilteredCompanies }) => {
     };
 
     fetchData();
-  }, [input, setFilteredCompanies]);
+  }, [input, setFilteredCompanies]); // Dependency array ensures this effect runs when input or setFilteredCompanies changes
 
   return (
     <div className="flex flex-col items-center m-auto">
