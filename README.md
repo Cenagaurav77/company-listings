@@ -11,7 +11,6 @@ This web application provides an intuitive and user-friendly interface for viewi
 - [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
 - [Additional Notes](#additional-notes)
-- [License](#license)
 
 ## Features
 
@@ -55,6 +54,7 @@ Make sure you have the following installed on your system:
 3. **Install dependencies for the backend:**
 
     ```sh
+    (On Windows - cmd in Administrative mode)
     cd ../server
     pip install -r requirements.txt
 
